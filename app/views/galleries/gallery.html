@@ -1,0 +1,15 @@
+<script type="text/javascript" language="Javascript">
+$(document).ready(function() {
+	$('#hidewithoutjs').show();
+});
+</script>
+<div id="hidewithoutjs" style="display:none">
+{yield(#hero_scroller.html#):h}
+</div>
+<script type="text/javascript" language="Javascript">
+document.write('<div style="display:none">');
+</script>
+<p>This page requires javascript. Please enable it in your browser.</p>
+<script type="text/javascript" language="Javascript">
+document.write('</div>');
+</script>

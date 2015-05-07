@@ -1,0 +1,17 @@
+<div id="hm_hero">
+        <div id="myGallery">
+            {foreach:images,k,image}
+                <span class="open" title="{image.label}"><img src="{image.heroURL()}" class="full"  /></span>
+            {end:} 
+        </div>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myGallery').innerfade({
+                speed: 4000, 
+                timeout: 8000, 
+                type: 'sequence', 
+                containerheight: '587px' 
+             }); 
+        });
+        </script>
+</div>

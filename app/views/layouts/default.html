@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>InstaJungle &amp; other things by Laurence Davies</title>
+<link href="{webroot}stylesheets/styles.css" rel="stylesheet" type="text/css" />
+<link rel='stylesheet' type='text/css' href='{webroot}stylesheets/quickmenu_styles.css'/>
+<link href="{webroot}stylesheets/reset.css" media="screen" rel="stylesheet" type="text/css" />
+	<script src="{webroot}javascripts/jquery-1.2.6.min.js" type="text/javascript"></script>
+	<script src="{webroot}javascripts/jquery.innerfade.js" type="text/javascript"></script>
+
+<!-- Core QuickMenu Code -->
+<script type="text/javascript" src="{webroot}javascripts/quickmenu.js"></script>
+
+</head>
+
+<body>
+{if:showimgnav}<div id="topnav_with_imgnav">{else:}<div id="topnav">{end:}
+		<div id="topnav_title"><!--<img src="{webroot}images/title.gif" alt="UNDER CONSTRUCTION" />--><h2>Instajungle</h2></div>
+		<div id="nav">
+					<ul id="qm0" class="qmmc">
+			
+				<li><a href="{webroot}">home</a></li>
+				<li><a class="qmparent" href="#">products</a>
+			
+					<ul>
+					{foreach:products,key,g}<li><a href="{webroot}products/{p.label}/">{p.label}</a></li>{end:}
+					</ul></li>
+			
+				<li><a href="{webroot}blog/">blog</a></li>
+				<li><a href="{webroot}contact/">contact</a></li>
+			<li class="qmclear">&nbsp;</li></ul>
+
+
+			<!-- Create Menu Settings: (Menu ID, Is Vertical, Show Timer, Hide Timer, On Click (options: 'all' * 'all-always-open' * 'main' * 'lev2'), Right to Left, Horizontal Subs, Flush Left, Flush Top) -->
+			<script type="text/javascript">qm_create(0,false,0,500,false,false,false,false,false);</script>
+		</div>
+		<div style="clear:both;"></div>
+
+		{if:showimgnav}{yield(#img_nav.html#):h}{end:}
+
+	</div>
+<div id="surround">	
+	{yield():h}
+</div>
+<div id="bottomnav">
+<div id="footer"><span class="footer_title">email:&nbsp;</span> <a href="./contact/">click here</a></div>
+</div>
+</body>
+</html>

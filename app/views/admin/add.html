@@ -1,0 +1,31 @@
+<h3>{ucfirst(name)}: {action}</h3>
+
+{if:errors}
+	<p class="dberror">Problems:</p>
+	<ul class="dberror">
+	{foreach:errors,i}
+		<li>{i}</li>
+	{end:}
+	</ul>
+{end:}
+
+{if:notices}
+	<ul>
+	{foreach:notices,i}
+		<li>{i}</li>
+	{end:}
+	</ul>
+{end:}
+
+<form method="post" name="form" onsubmit="return checkform()" enctype="multipart/form-data">
+
+{yield(form_template):h}
+
+<input type="hidden" name="action" value="{action}" />
+{if:isEditing()}
+	<input type="hidden" name="id" value="{id}" />
+{end:}
+
+<input type="submit" value="Save changes &gt;&gt;" />
+</form>
+

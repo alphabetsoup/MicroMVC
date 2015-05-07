@@ -1,0 +1,52 @@
+<?php
+/**
+ * Image output and image gallery output (Exhibit)
+ *
+ * Output an image:
+ * Syntax /img/<image_size>/<path_to_image>
+ *
+ *     image_size can be one of three options:
+ *         'images' (standard middle size defined by IMG_STD_SIZE config value)
+ *         'thumbs' (standard thumbnail size defined by IMG_THUMB_SIZE config value)
+ *         'custom/<size>' (custom size defined in the URL, e.g. /img/custom/150/<path_to_image> 
+ *                          for an image 150 pixels at the greatest dimension)
+ *
+ *     The path_to_image is always the path to the image relative to the
+ *     EXH_LIBRARY configuration setting on the filesystem, e.g.
+ *     ip_images/some-image.jpg
+ */
+
+require_once '../base/exhibit.php';
+
+$exh =& new Exhibit();
+$cmd = $exh->url->getCommand();
+
+$exh->out->image($cmd['path'], $exh->getImgSize($cmd['path'], $cmd['cmd']));
+exit;
+
+/* DEPRECATED 04-01-2010 - use exh_dimensions table instead (through Exhibit::getImgSize() ) 
+switch ($cmd['cmd']) {
+    case 'SHOW_IMAGE':
+        $exh->out->image($cmd['path'], $exh->getImgSize($cmd['path'], 'STANDARD'));
+        break;
+    case 'SHOW_THUMB':
+        $exh->out->image($cmd['path'], $exh->getImgSize($cmd['path'], 'THUMB'));
+        break;
+	case 'SHOW_CUSTOM':
+		$exh->out->image($cmd['path'], $cmd['size']);
+		break;
+    case 'SHOW_FORCEWIDTH':
+        $exh->out->image($cmd['path'], $cmd['size'], true);
+        exit;
+        break;
+    case 'SHOW_CROPPED':
+        $exh->out->image($cmd['path'], $cmd['size'], false, true,false);
+        exit;
+        break;
+	case 'SHOW_DESAT_CROPPED':
+		$exh->out->image($cmd['path'], $cmd['size'], false, true, true);
+        exit;
+        break;
+
+}
+*/

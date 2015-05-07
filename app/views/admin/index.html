@@ -1,0 +1,20 @@
+<h3>{ucfirst(name)}</h3>
+
+{if:records}
+	<table>
+		<tr>
+		{foreach:obj.list_columns,k,column}
+			<th>{column}</td>
+		{end:}
+		</tr>
+	{foreach:records,row_no,row}
+		<tr>
+		{foreach:obj.list_columns,k,column}
+			<td><a href="{getAdminURL(table,#edit#,row.id)}">{row.flexyGet(column)}</a></td>
+		{end:}
+		</tr>
+	{end:}
+	</table>
+{else:}
+	<p>Nothing to list.</p>
+{end:}

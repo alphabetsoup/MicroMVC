@@ -1,0 +1,7 @@
+AuthUserFile /home/www/instajungle.com/app/authenticate/admin.htpasswd
+AuthName "admin"
+AuthType Basic
+AuthName "Password Required"
+<Limit GET PUT POST>
+	require valid-user
+</Limit>

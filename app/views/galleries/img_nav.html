@@ -1,0 +1,22 @@
+<script type="text/javascript" language="Javascript">
+	$(document).ready(function () {
+		$('div.img_nav_item').bind("mouseenter",function(){
+			$('div.blur',this).hide();
+			$('div.hover',this).show();	
+		})
+		.bind("mouseleave",function(){
+			$('div.hover',this).hide();
+			$('div.blur',this).show();
+		})
+		.click(function() {
+			showHero($(this).attr('id'));
+		});
+		showHero($('div.img_nav_item:first').attr('id'));
+	});
+</script>
+{foreach:gallery.images,key,image}{if:image.show_in_nav}
+<div id="image_{image.id}" class="img_nav_item">
+<div class="blur" style="display:block;background:url('{image.navDesatURL()}') center center no-repeat;{imgNavCSSDimensions(key):h}"></div>
+<div class="hover" style="display:none;background:url('{image.navURL()}') center center no-repeat;{imgNavCSSDimensions(key):h}"></div>
+</div>
+{end:}{end:}

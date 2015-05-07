@@ -1,0 +1,63 @@
+body {
+background:#000000;
+margin:33px 0px 20px 0px;
+}
+
+topnav_bg {
+background-image:url(images/bg.jpg);
+background-repeat:repeat-x;
+}
+
+bottomnav_bg {
+background-image:url(images/bg.jpg);
+background-repeat:repeat-x;
+}
+
+p, td, li, input {
+font-family:Arial, Helvetica, sans-serif;
+font-size:11px;
+color:#CCCCCC;
+}
+a {
+color:#CCCCCC;}
+a:hover {
+color:#FFFFFF;}
+a:visited {
+	color:#CCCCCC;
+}
+
+#surround {
+width: 902px;
+position:absolute;
+left:50%;
+margin-left:-451px;
+}
+
+#topnav {
+margin-bottom:30px;
+height:29px;
+background-image:url(images/topnav_bg.jpg)
+}
+#topnav_title {
+width:374px;
+float:left;
+}
+
+#nav{
+float:right;
+height:19px;
+margin-top:5px;
+}
+
+#hm_hero {
+width:888px;
+height:587px;
+padding:6px;
+border:1px solid #464B4E;
+}
+
+#bottomnav {
+margin-top:30px;
+height:20px;
+background-image:url(images/footer_bg.gif);
+}

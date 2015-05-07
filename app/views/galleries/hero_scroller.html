@@ -1,0 +1,17 @@
+<div id="hm_hero">
+        <div id="myGallery">
+            {foreach:gallery.images,k,image}
+				{if:image.right_image_id}	
+                <span id="image_{image.id}_hero" class="open" title="{image.label}"><img src="{image.twoColURL()}" class="full" style="float:left" /><img src="{image.rightImageURL()}" class="full" style="margin-left:8px;float:right;" /></span><div style="clear:both;"></div>
+				{else:}
+				<span id="image_{image.id}_hero" class="open" title="{image.label}"><img src="{image.heroURL()}" class="full" /></span>
+				{end:}
+            {end:} 
+        </div>
+        <script type="text/javascript">
+        	function showHero(id) {
+				$("#myGallery").children().hide();
+				$('#'+id+"_hero").show();
+			}
+		</script>
+</div>

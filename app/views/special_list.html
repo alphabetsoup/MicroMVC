@@ -1,0 +1,13 @@
+<h3>{name}</h3>
+
+{if:records}
+	<table>
+	{foreach:records,row_no,row}
+		<tr>
+			<td><a href="?action=edit&id={row[id]}">{row[label]}</a></td>
+		</tr>
+	{end:}
+	</table>
+{else:}
+	<p>Nothing to list.</p>
+{end:}

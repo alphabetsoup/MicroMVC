@@ -1,0 +1,24 @@
+php_value include_path "/home/www/instajungle.com/base:/home/www/instajungle.com/base/pear:."
+
+<Files img>
+	ForceType application/x-httpd-php
+</Files>
+
+<Files pdf>
+	ForceType application/x-httpd-php
+</Files>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^$ bootstrap.php?controller=home&action=index [L]
+RewriteRule ^admin/?$ bootstrap.php?controller=admin&table=galleries&action=index [L]
+RewriteRule ^admin/([^/\.]+)/?$ bootstrap.php?controller=admin&table=$1&action=index [L]
+RewriteRule ^admin/([^/\.]+)/([^/\.]+)/?$ bootstrap.php?controller=admin&table=$1&action=$2 [L]
+RewriteRule ^admin/([^/\.]+)/([^/\.]+)/([^/\.]+)/?$ bootstrap.php?controller=admin&table=$1&action=$2&id=$3 [L]
+RewriteCond $1 !(img|uploads|images|stylesheets|javascripts|thesisbsite)
+RewriteRule ^([^/\.]+)/?$ bootstrap.php?controller=$1&action=index [L]
+RewriteCond $1 !(img|uploads|images|stylesheets|javascripts|thesisbsite)
+RewriteRule ^([^/\.]+)/([^/\.]+)/?$ bootstrap.php?controller=$1&action=$2 [L]
+
+</IfModule>

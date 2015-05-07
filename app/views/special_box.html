@@ -1,0 +1,21 @@
+<table width="227" border="0" cellpadding="3" cellspacing="0" >
+<tr>
+	<td bgcolor="#DFDFDF"><div align="center"><img src="images/latest_prop.gif" alt="eLeasing Projects" width="211" height="35"></div></td>
+</tr>
+{foreach:projects,i,item}
+<tr>
+	<td bgcolor="#DFDFDF">
+		<div align="center"><img src="img/custom/213/projects/{item[id]}/{item[image]}" border="0" alt="{item[name]}"></div>
+	</td>
+</tr>
+<tr>
+	<td bgcolor="#DFDFDF"><table width="211" border="0" align="center" cellpadding="0" cellspacing="0">
+		<tr>
+			<td valign="top"><strong><span class="smlblack"><font color="#666666">{item[label]}</font><br/></span></strong>
+			<span class="smlblack">{item[excerpt]}<br>
+			<a href="{webroot}projects/">View all eLeasing projects &raquo;</a></span></td>
+		</tr>
+	</table></td>
+</tr>
+{end:}
+</table>

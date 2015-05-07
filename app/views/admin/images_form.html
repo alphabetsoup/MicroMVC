@@ -1,0 +1,86 @@
+<script language="Javascript">
+<!--
+function checkform() {
+	if (false) {
+		//(document.form.label.value == "") {
+		alert("Please enter a label");
+		document.form.label.focus();
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+-->
+</script>
+
+{if:isEditing()}
+	<div id="delete">
+		<a href="{urlFor(#delete#,id,name)}" onclick="return confirm('Are you sure you want to delete this {name}?')">Delete this {name}</a>
+	</div>
+{end:}
+
+<table width="450" align="" cellspacing="15">
+<tr>
+	<td>Gallery:</td>
+	<td><select name="gallery_id">	
+		</select></td>
+</tr>
+<tr>
+	<td>Caption:</td>
+	<td><input type="text" name="label" /></td>
+</tr>
+<tr>
+	<td>Weight/order in list<br /> (1=highest, 2=second highest, etc.):</td>
+	<td><input type="text" name="weight" /></td>
+</tr>
+<tr>
+	<td>Show on home page:</td>
+	<td><input type="radio" id="y" name="show_on_home" value="y"/>Yes<input type="radio" id="n" name="show_on_home" value="n" />No</td>
+</tr>
+<tr>
+<tr valign="top">
+	<td>Image</td>
+	<td>
+		<input type="file" name="image" />
+		<h1>{obj.image_path}</h1>
+		{if:obj.image_path}  <!-- elements[image_path].value -->
+			<br/> The following image has been loaded. Uploading another image will replace this one: <br/>
+			<img src="{webroot}img/thumbs/{obj.db_table}/{id}/{obj.image_path}" border="0" /><br/>
+			<!--[ <a href="{urlFor(#delete#)}">- delete</a> ] -->
+		{end:}
+	</td>
+</tr>
+<tr>
+<td>Composite with image:</td>
+	<td>
+	{if:isEditing()}
+	<p>Please note: the selected composite image will be automatically removed from the gallery navigation</p>
+	{clearElementOptions(#right_image_id#)}
+	<script type="text/javascript" language="Javascript" >
+	$(document).ready(function() {
+		var right_image_radio = $("input[name='right_image_id']:checked");
+		if (!right_image_radio || !right_image_radio.val() || right_image_radio.val() == 0) $(".right_image_default").attr('checked','checked');
+	});
+	</script>
+	<input type="radio" value="0" name="right_image_id" class="right_image_default" />Disassociate composite image / Have no associated composite image.<br /><br />
+	<div style="border:1px solid #999999;position:relative;width:740px;margin:10px 0;">
+	{foreach:obj.gallery.images,k,img}
+		{if:img.id}{if:img.isnot(obj.id)}
+			<div style="float:left;margin:5px;padding:0;border:0;">
+				<input type="radio" value="{img.id}" name="right_image_id" />
+				<img src="{img.thumbURL()}" valign="middle"/>
+			</div>
+		{end:}{end:}
+	{end:}
+	<div style="clear:both"></div>
+	</div>
+
+	{else:}
+	<p>You must save this image to a gallery before you can specify a composite image<p>
+	{end:}
+	</td>
+</tr>
+
+
+</table>
